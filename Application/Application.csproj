@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyResume.Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Article\" />
+    <Folder Include="Services\ArticleComment\" />
+    <Folder Include="Services\ArticleView\" />
+    <Folder Include="Services\Contact\" />
+    <Folder Include="Services\CustomersComments\" />
+    <Folder Include="Services\LastWorks\" />
+    <Folder Include="Services\MyServices\" />
+    <Folder Include="Services\WorkWith\" />
+    <Folder Include="Services\User\" />
+    <Folder Include="Services\Resume\" />
+    <Folder Include="Services\Questions\" />
+    <Folder Include="Services\Professions\" />
+    <Folder Include="Services\Prizes\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+</Project>
