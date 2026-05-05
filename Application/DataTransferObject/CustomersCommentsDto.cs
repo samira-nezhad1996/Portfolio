@@ -12,7 +12,7 @@ namespace Application.DataTransferObject
         public string Name { get; set; }
         public string Comment { get; set; }
         public string profession { get; set; }
-        public int Starts { get; set; }
+        public int Stars { get; set; }
         public string CommenterUrl { get; set; }
     }
 }

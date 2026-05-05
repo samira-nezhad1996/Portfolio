@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
-    public class ArticleEntitiy : BaseEntity
+    public class ArticleEntity : BaseEntity
     {
       
         public string Title { get; set; }
@@ -12,5 +12,8 @@ namespace Domain.Entities
         public string Picture { get; set; }
         public int ReadTime { get; set; }
         public string Tags { get; set; }
+
+        public ICollection<ArticleCommentEntity> Comments { get; set; }
+
     }
 }

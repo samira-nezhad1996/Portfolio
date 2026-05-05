@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
-    public class ResumeEntitiy : BaseEntity
+    public class ResumeEntity : BaseEntity
     {
      
         public string Title { get; set; }

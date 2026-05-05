@@ -1,11 +1,10 @@
 ﻿using Domain.Entities.Common;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 
 namespace Domain.Entities
 {
-    public class ArticleCommentEntitiy : BaseEntity
+    public class ArticleCommentEntity : BaseEntity
     {
 
         public string FullName { get; set; }
@@ -16,7 +15,7 @@ namespace Domain.Entities
 
         #region Relations
         [ForeignKey(nameof(ArticleId))]
-        public ArticleEntitiy? Article { get; set; }
+        public ArticleEntity? Article { get; set; }
 
         #endregion
     }

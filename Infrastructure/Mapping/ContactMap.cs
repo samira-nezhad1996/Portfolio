@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Mapping
 {
-    internal sealed class ContactMap : IEntityTypeConfiguration<ContactEntitiy>
+    internal sealed class ContactMap : IEntityTypeConfiguration<ContactEntity>
     {
-        public void Configure(EntityTypeBuilder<ContactEntitiy> builder)
+        public void Configure(EntityTypeBuilder<ContactEntity> builder)
         {
             builder.ToTable("Contact");
             builder.Property(c => c.Name).HasMaxLength(100).IsRequired();

@@ -4,16 +4,17 @@ using Domain.Entities;
 
 namespace Infrastructure.Mapping
 {
-    internal sealed class AboutMeMap :IEntityTypeConfiguration<AboutMeEntitiy>
+    internal sealed class AboutMeMap :IEntityTypeConfiguration<AboutMeEntity>
     {
-        public void Configure(EntityTypeBuilder<AboutMeEntitiy> builder)
+        public void Configure(EntityTypeBuilder<AboutMeEntity> builder)
         {
-            builder.ToTable("Aboutme");
-            builder.Property(a => a.Name).HasMaxLength(50).IsRequired();
-            builder.Property(a => a.Description).HasMaxLength(1000).IsRequired();
-            builder.Property(a => a.WorkYear).HasMaxLength(5).IsRequired();
-            builder.Property(a => a.CompletedProject).HasMaxLength(500).IsRequired();
-            builder.Property(a => a.Customers).HasMaxLength(500).IsRequired();
+            builder.ToTable("AboutMe");
+            builder.HasKey(a => a.Id);
+            builder.Property(a => a.Name).HasMaxLength(100).IsRequired();
+            builder.Property(a => a.Description).HasMaxLength(1000);
+            builder.Property(a => a.WorkYear).IsRequired();
+            builder.Property(a => a.CompletedProject).IsRequired();
+            builder.Property(a => a.Customers).IsRequired();
             builder.Property(a => a.Email).HasMaxLength(100).IsRequired();
             builder.Property(a => a.Mobile).HasMaxLength(20).IsRequired();
         }

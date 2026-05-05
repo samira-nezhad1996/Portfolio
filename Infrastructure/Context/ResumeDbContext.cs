@@ -7,20 +7,20 @@ namespace Infrastructure.Context
     {
         #region Dbset
 
-        public DbSet<AboutMeEntitiy> AboutMe { get; set; }
-        public DbSet<ArticleEntitiy> Articles { get; set; }
-        public DbSet<ArticleCommentEntitiy> ArticleComments { get; set; }
-        public DbSet<ArticleViewEntitiy> ArticleViews { get; set; }
-        public DbSet<ContactEntitiy> Contact { get; set; }
-        public DbSet<CustomersCommentsEntitiy> CustomersComments { get; set; }
-        public DbSet<LastWorksEntitiy> LastWorks { get; set; }
-        public DbSet<MyServicesEntitiy> MyServices { get; set; }
-        public DbSet<PrizesEntitiy> Prizes { get; set; }
-        public DbSet<ProfessionsEntitiy> Professions { get; set; }
-        public DbSet<QuestionsEntitiy> Questions { get; set; }
-        public DbSet<ResumeEntitiy> Resume { get; set; }
-        public DbSet<UserEntitiy> Users { get; set; }
-        public DbSet<WorkWithEntitiy> WorkWith { get; set; }
+        public DbSet<AboutMeEntity> AboutMe { get; set; }
+        public DbSet<ArticleEntity> Articles { get; set; }
+        public DbSet<ArticleCommentEntity> ArticleComments { get; set; }
+        public DbSet<ArticleViewEntity> ArticleViews { get; set; }
+        public DbSet<ContactEntity> Contact { get; set; }
+        public DbSet<CustomersCommentsEntity> CustomersComments { get; set; }
+        public DbSet<LastWorksEntity> LastWorks { get; set; }
+        public DbSet<MyServicesEntity> MyServices { get; set; }
+        public DbSet<PrizesEntity> Prizes { get; set; }
+        public DbSet<ProfessionEntity> Professions { get; set; }
+        public DbSet<QuestionsEntity> Questions { get; set; }
+        public DbSet<ResumeEntity> Resume { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<WorkWithEntity> WorkWith { get; set; }
 
         #endregion
 

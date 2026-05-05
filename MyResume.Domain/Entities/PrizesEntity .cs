@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
-    public class LastWorksEntitiy : BaseEntity
+    public class PrizesEntity : BaseEntity
     {
-        
+     
         public string Title { get; set; }
-        public string ShortDescription { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        public string StartYear { get; set; }
+        public int Rank { get; set; }
         public string Logo { get; set; }
+        public string Url { get; set; }
     }
 }

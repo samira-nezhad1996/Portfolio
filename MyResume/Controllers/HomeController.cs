@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace web.Controllers
 {
-    public class HomeController(IGenericRepository<UserEntitiy> repository) : Controller
+    public class HomeController(IGenericRepository<UserEntity> repository) : Controller
     {
       
         public async Task<IActionResult> Index()
         {
-            IEnumerable<UserEntitiy> users = await repository.GetAllAsync();
+            IEnumerable<UserEntity> users = await repository.GetAllAsync();
 
             return View();
         }

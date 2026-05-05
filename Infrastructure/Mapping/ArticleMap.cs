@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Mapping
 {
-    internal sealed class ArticleMap : IEntityTypeConfiguration<ArticleEntitiy>
+    internal sealed class ArticleMap : IEntityTypeConfiguration<ArticleEntity>
     {
-        public void Configure(EntityTypeBuilder<ArticleEntitiy> builder)
+        public void Configure(EntityTypeBuilder<ArticleEntity> builder)
         {
             builder.ToTable("Article");
             builder.Property(a => a.Title).HasMaxLength(500).IsRequired();

@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
-    public class ProfessionsEntitiy : BaseEntity
+    public class MyServicesEntity : BaseEntity
     {
-     
+   
         public string Title { get; set; }
         public string Logo { get; set; }
     }

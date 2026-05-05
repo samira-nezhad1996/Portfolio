@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
-    public class ContactEntitiy : BaseEntity
+    public class ContactEntity : BaseEntity
     {
-     
         public string Name { get; set; }
         public string Email { get; set; }
         public string Mobile { get; set; }

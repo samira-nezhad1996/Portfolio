@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Mapping
 {
-    internal sealed  class ArticleViewMap : IEntityTypeConfiguration<ArticleViewEntitiy>
+    internal sealed  class ArticleViewMap : IEntityTypeConfiguration<ArticleViewEntity>
     {
-        public void Configure(EntityTypeBuilder<ArticleViewEntitiy> builder)
+        public void Configure(EntityTypeBuilder<ArticleViewEntity> builder)
         {
             builder.ToTable("ArticleView");
             builder.Property(a => a.ArticleId).IsRequired();

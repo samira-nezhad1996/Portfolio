@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
-    public class CustomersCommentsEntitiy : BaseEntity
+    public class CustomersCommentsEntity : BaseEntity
     {
       
         public string Name { get; set; }
         public string Comment { get; set; }
-        public string profession { get; set; }
-        public StarRating Starts { get; set; }
+        public string Profession { get; set; }
+        public StarRating Stars { get; set; }
         public string CommenterUrl { get; set; }
     }
 }

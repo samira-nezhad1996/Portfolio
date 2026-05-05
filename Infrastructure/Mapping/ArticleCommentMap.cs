@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Mapping
 {
-    internal sealed class ArticleCommentMap : IEntityTypeConfiguration<ArticleCommentEntitiy>
+    internal sealed class ArticleCommentMap : IEntityTypeConfiguration<ArticleCommentEntity>
     {
-        public void Configure(EntityTypeBuilder<ArticleCommentEntitiy> builder)
+        public void Configure(EntityTypeBuilder<ArticleCommentEntity> builder)
         {
             builder.ToTable("ArticleComment");
             builder.Property(c => c.FullName).HasMaxLength(100).IsRequired();

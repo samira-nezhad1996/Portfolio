@@ -3,7 +3,7 @@
 
 namespace Domain.Entities
 {
-    public class UserEntitiy : BaseEntity
+    public class UserEntity : BaseEntity
     {
         public string FullName { get; set; }
         public string Email { get; set; }

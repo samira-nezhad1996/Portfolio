@@ -1,17 +1,12 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Mapping
 {
-    internal sealed class MyServicesMap : IEntityTypeConfiguration<MyServicesEntitiy>
+    internal sealed class MyServicesMap : IEntityTypeConfiguration<MyServicesEntity>
     {
-        public void Configure(EntityTypeBuilder<MyServicesEntitiy> builder)
+        public void Configure(EntityTypeBuilder<MyServicesEntity> builder)
         {
             builder.ToTable("MyServices");
             builder.Property(s => s.Title).HasMaxLength(500).IsRequired();

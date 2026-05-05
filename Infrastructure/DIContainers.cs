@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Application.Services.AboutMe;
+using Application.Services.User;
 
 namespace Infrastructure
 {
@@ -10,6 +11,7 @@ namespace Infrastructure
         {
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IAboutMeService, AboutMeService>();
+            services.AddScoped<IUserService, UserService >();
         }
     }
 }

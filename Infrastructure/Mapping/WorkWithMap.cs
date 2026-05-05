@@ -1,17 +1,12 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Mapping
 {
-    internal sealed class WorkWithMap : IEntityTypeConfiguration<WorkWithEntitiy>
+    internal sealed class WorkWithMap : IEntityTypeConfiguration<WorkWithEntity>
     {
-        public void Configure(EntityTypeBuilder<WorkWithEntitiy> builder)
+        public void Configure(EntityTypeBuilder<WorkWithEntity> builder)
         {
             builder.ToTable("WorkWith");
             builder.Property(w => w.Title).HasMaxLength(500).IsRequired();

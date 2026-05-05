@@ -20,12 +20,6 @@ var builder = WebApplication.CreateBuilder(args);
 #region
 builder.Services.RegisterService();
 
-
-#endregion
-
-
-#region Service Registration
-builder.Services.RegisterService();
 #endregion
 
 var app = builder.Build();
