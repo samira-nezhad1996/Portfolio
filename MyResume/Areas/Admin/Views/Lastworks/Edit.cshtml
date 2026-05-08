@@ -1,0 +1,71 @@
+﻿@model Application.ViewModels.LastWorks.EditLastWorkViewModel
+@{
+    ViewData["Title"] = "ویرایش آخرین کار";
+}
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <h2 class="mb-0">ویرایش</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary">بازگشت</a>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="ShortDescription" class="form-label"></label>
+                    <input asp-for="ShortDescription" class="form-control" />
+                    <span asp-validation-for="ShortDescription" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="StartDate" class="form-label"></label>
+                    <input asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="EndDate" class="form-label"></label>
+                    <input asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="Logo" class="form-label"></label>
+                    <input asp-for="Logo" class="form-control" />
+                    <span asp-validation-for="Logo" class="text-danger small"></span>
+
+                    @if (!string.IsNullOrWhiteSpace(Model.Logo))
+                    {
+                        <div class="mt-2">
+                            <span class="text-muted d-block mb-2">لوگوی فعلی:</span>
+                            <img src="@Model.Logo" class="img-fluid rounded border"
+                                 style="max-height:120px; object-fit:contain;" />
+                        </div>
+                    }
+                </div>
+
+                <div class="col-12 d-flex gap-2">
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-save me-1"></i>ذخیره تغییرات
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">لغو</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

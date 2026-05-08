@@ -1,0 +1,27 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "جزئیات کاربر";
+}
+
+<h2>جزئیات کاربر</h2>
+
+<div class="card">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">نام کامل:</dt>
+            <dd class="col-sm-9">@Model.FullName</dd>
+
+            <dt class="col-sm-3">ایمیل:</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+
+            <dt class="col-sm-3">شماره موبایل:</dt>
+            <dd class="col-sm-9">@Model.Mobile</dd>
+
+            <dt class="col-sm-3">تاریخ ایجاد:</dt>
+            <dd class="col-sm-9">@Model.CreateDate.ToString("yyyy/MM/dd")</dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">ویرایش</a>
+        <a asp-action="Index" class="btn btn-secondary">بازگشت</a>
+    </div>
+</div>
+

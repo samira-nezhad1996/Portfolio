@@ -1,9 +1,8 @@
-﻿
-
-namespace Application.ViewModels
+﻿namespace Application.ViewModels.User
 {
-    public sealed record  UserViewModel
+    public sealed record UserViewModel
     {
+        public Guid Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string Mobile { get; set; }
