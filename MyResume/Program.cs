@@ -6,11 +6,12 @@ using Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
     // Add services to the container.
-    builder.Services.AddControllersWithViews();
+builder.Services.RegisterService();
+builder.Services.AddControllersWithViews();
 
 
-    #region Db Context
-    builder.Services.AddDbContext<ResumeDbContext>(options =>
+#region Db Context
+builder.Services.AddDbContext<ResumeDbContext>(options =>
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("ResumeConnection"));
 

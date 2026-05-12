@@ -1,46 +1,47 @@
-﻿@model IEnumerable<UserViewModel>
+﻿@model IEnumerable<Application.ViewModels.User.UserViewModel>
 @{
     ViewData["Title"] = "لیست کاربران";
 }
 
-<h2 class="mb-3">لیست کاربران</h2>
+<h1>@ViewData["Title"]</h1>
 
-<a asp-action="Create" class="btn btn-success mb-3">افزودن کاربر جدید</a>
+<p>
+    <a asp-action="Create" class="btn btn-primary">ایجاد کاربر جدید</a>
+</p>
 
-<table class="table table-bordered table-striped text-center">
-    <thead class="table-dark">
+<table class="table table-striped">
+    <thead>
         <tr>
-            <th>نام کامل</th>
-            <th>ایمیل</th>
-            <th>شماره موبایل</th>
-            <th>تاریخ ایجاد</th>
-            <th>عملیات</th>
+            <th>
+                نام کامل
+            </th>
+            <th>
+                ایمیل
+            </th>
+            <th>
+                موبایل
+            </th>
+            <th></th> 
         </tr>
     </thead>
     <tbody>
-        @foreach (var user in Model)
+        @foreach (var item in Model)
         {
             <tr>
-                <td>@user.FullName</td>
-                <td>@user.Email</td>
-                <td>@user.Mobile</td>
-                <td>@user.CreateDate.ToString("yyyy/MM/dd")</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-info">جزئیات</a>
-                    <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-sm btn-warning">ویرایش</a>
-                    <form asp-action="Delete" asp-route-id="@user.Id" method="post" style="display:inline;">
-                        <button type="submit" class="btn btn-sm btn-danger"
-                                onclick="return confirm('آیا از حذف مطمئن هستید؟');">
-                            حذف
-                        </button>
-                    </form>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">ویرایش</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">جزئیات</a> |
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-@if (!Model.Any())
-{
-    <div class="alert alert-info mt-3">هیچ کاربری ثبت نشده است.</div>
-}

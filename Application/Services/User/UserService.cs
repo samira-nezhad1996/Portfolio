@@ -1,6 +1,6 @@
 ﻿using Application.DataTransferObject;
-using Application.ViewModels.User;
 using Domain.Entities;
+using Application.Repositories;
 
 
 namespace Application.Services.User;
@@ -12,60 +12,60 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<IEnumerable<UserViewModel>> GetAllUsersAsync()
+    public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
     {
         var users = await _userRepository.GetAllAsync();
-        return users.Select(u => new UserViewModel
+        return users.Select(u => new UserDto
         {
             Id = u.Id,
-            FullName = u.Fullname,
+            FullName = u.FullName,
             Email = u.Email,
             Mobile = u.Mobile,
-            CreateDate = u.CreateDate
+            Password = u.Password
         }).ToList();
     }
 
-    public async Task<UserViewModel?> GetUserByIdAsync(Guid id)
+    public async Task<UserDto?> GetUserByIdAsync(Guid id)
     {
         var user = await _userRepository.GetByIdAsync(id);
         if (user == null)
             return null;
 
-        return new UserViewModel
+        return new UserDto
         {
             Id = user.Id,
-            FullName = user.Fullname,
+            FullName = user.FullName,
             Email = user.Email,
             Mobile = user.Mobile,
-            CreateDate = user.CreateDate
+            Password = user.Password
         };
     }
 
-    public async Task CreateUserAsync(CreateUserViewModel model)
+    public async Task CreateUserAsync(UserDto userDto)
     {
-        var newUser = new User
+        var newUser = new UserEntity
         {
             Id = Guid.NewGuid(),
-            Fullname = model.FullName,
-            Email = model.Email,
-            Mobile = model.Mobile,
-            CreateDate = DateTime.UtcNow
+            FullName = userDto.FullName,
+            Email = userDto.Email,
+            Mobile = userDto.Mobile,
+            Password = userDto.Password
         };
 
         await _userRepository.AddAsync(newUser);
         await _userRepository.SaveChangesAsync();
     }
 
-    public async Task UpdateUserAsync(EditUserViewModel model)
+    public async Task UpdateUserAsync(UserDto userDto)
     {
-        var user = await _userRepository.GetByIdAsync(model.Id);
+        var user = await _userRepository.GetByIdAsync(userDto.Id);
         if (user == null) return;
 
-        user.Fullname = model.FullName;
-        user.Email = model.Email;
-        user.Mobile = model.Mobile;
+        user.FullName = userDto.FullName;
+        user.Email = userDto.Email;
+        user.Mobile = userDto.Mobile;
 
-        _userRepository.Update(user);
+        _userRepository.UpdateAsync(user);
         await _userRepository.SaveChangesAsync();
     }
 
@@ -74,7 +74,7 @@ public class UserService : IUserService
         var user = await _userRepository.GetByIdAsync(id);
         if (user == null) return;
 
-        _userRepository.Delete(user);
+        _userRepository.DeleteAsync(user);
         await _userRepository.SaveChangesAsync();
     }
 }

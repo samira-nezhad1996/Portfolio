@@ -1,66 +1,66 @@
-﻿@model Application.ViewModels.LastWorks.EditLastWorkViewModel
+﻿@model Application.ViewModels.LastWork.EditLastWorkViewModel
 @{
-    ViewData["Title"] = "ویرایش آخرین کار";
+    ViewData["Title"] = "ویرایش رکورد";
 }
 
-<div class="d-flex align-items-center justify-content-between mb-3">
-    <h2 class="mb-0">ویرایش</h2>
-    <a asp-action="Index" class="btn btn-outline-secondary">بازگشت</a>
-</div>
-
 <div class="card shadow-sm border-0">
+    <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">ویرایش رکورد</h5>
+        <a asp-action="Index" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-arrow-left me-1"></i>
+            بازگشت به لیست
+        </a>
+    </div>
     <div class="card-body">
-        <form asp-action="Edit" method="post" enctype="multipart/form-data">
-            @Html.AntiForgeryToken()
-
+        <form asp-action="Edit" method="post" class="needs-validation" novalidate>
             <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                خطا در ارسال فرم:
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
 
             <div class="row g-3">
                 <div class="col-md-6">
                     <label asp-for="Title" class="form-label"></label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger small"></span>
+                    <input asp-for="Title" class="form-control" required />
+                    <div class="invalid-feedback">لطفاً عنوان را وارد کنید.</div>
                 </div>
 
                 <div class="col-md-6">
                     <label asp-for="ShortDescription" class="form-label"></label>
-                    <input asp-for="ShortDescription" class="form-control" />
-                    <span asp-validation-for="ShortDescription" class="text-danger small"></span>
+                    <textarea asp-for="ShortDescription" class="form-control" rows="3"></textarea>
+                    <div class="valid-feedback"></div>
                 </div>
 
                 <div class="col-md-6">
                     <label asp-for="StartDate" class="form-label"></label>
-                    <input asp-for="StartDate" class="form-control" />
-                    <span asp-validation-for="StartDate" class="text-danger small"></span>
+                    <input asp-for="StartDate" type="date" class="form-control" />
+                    <div class="valid-feedback"></div>
                 </div>
 
                 <div class="col-md-6">
                     <label asp-for="EndDate" class="form-label"></label>
-                    <input asp-for="EndDate" class="form-control" />
-                    <span asp-validation-for="EndDate" class="text-danger small"></span>
+                    <input asp-for="EndDate" type="date" class="form-control" />
+                    <div class="valid-feedback"></div>
                 </div>
 
-                <div class="col-md-12">
+                <div class="col-12">
                     <label asp-for="Logo" class="form-label"></label>
                     <input asp-for="Logo" class="form-control" />
-                    <span asp-validation-for="Logo" class="text-danger small"></span>
-
-                    @if (!string.IsNullOrWhiteSpace(Model.Logo))
-                    {
-                        <div class="mt-2">
-                            <span class="text-muted d-block mb-2">لوگوی فعلی:</span>
-                            <img src="@Model.Logo" class="img-fluid rounded border"
-                                 style="max-height:120px; object-fit:contain;" />
-                        </div>
-                    }
+                    <div class="valid-feedback"></div>
                 </div>
+            </div>
 
-                <div class="col-12 d-flex gap-2">
-                    <button type="submit" class="btn btn-warning">
-                        <i class="bi bi-save me-1"></i>ذخیره تغییرات
-                    </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">لغو</a>
-                </div>
+            <div class="mt-4">
+                <button class="btn btn-warning me-2" type="submit">
+                    <i class="bi bi-pencil me-1"></i>
+                    به‌روزرسانی
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-x-circle me-1"></i>
+                    لغو
+                </a>
             </div>
         </form>
     </div>
@@ -68,4 +68,20 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function () {
+            'use strict';
+            var forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+        })();
+    </script>
 }

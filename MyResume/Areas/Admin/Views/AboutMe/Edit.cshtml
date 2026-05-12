@@ -1,0 +1,73 @@
+﻿@model Application.ViewModels.AboutMe.EditAboutMeViewModel
+
+@{
+    ViewData["Title"] = "ویرایش About Me";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">ویرایش About Me</h3>
+        </div>
+
+        <div class="card-body">
+            <form asp-area="Admin" asp-controller="AboutMe" asp-action="Edit" method="post">
+                @Html.AntiForgeryToken()
+
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">نام</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">توضیحات</label>
+                    <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="WorkYear" class="form-label">سال کاری</label>
+                    <input asp-for="WorkYear" class="form-control" type="number" />
+                    <span asp-validation-for="WorkYear" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CompletedProject" class="form-label">تعداد پروژه‌ها</label>
+                    <input asp-for="CompletedProject" class="form-control" type="number" />
+                    <span asp-validation-for="CompletedProject" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Customers" class="form-label">تعداد مشتری‌ها</label>
+                    <input asp-for="Customers" class="form-control" type="number" />
+                    <span asp-validation-for="Customers" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">ایمیل</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Mobile" class="form-label">موبایل</label>
+                    <input asp-for="Mobile" class="form-control" />
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">ثبت تغییرات</button>
+                <a asp-area="Admin" asp-controller="AboutMe" asp-action="Index" class="btn btn-secondary">بازگشت</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,5 +1,6 @@
 ﻿using Domain.Entities.Common;
 using Infrastructure.Context;
+using Application.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
@@ -12,7 +13,7 @@ namespace Infrastructure.Repositories
         public GenericRepository(ResumeDbContext context)
         {
             _Context = context;
-             this._dbSet = _Context.Set<TEntity>();
+             _dbSet = _Context.Set<TEntity>();
         }
 
 
@@ -30,7 +31,7 @@ namespace Infrastructure.Repositories
         }
 
 
-        public async Task<TEntity> GetByIdAsync(int id)
+        public async Task<TEntity?>GetByIdAsync(Guid id)
         {
             return await _dbSet.FirstOrDefaultAsync(u => u.Id == id);
         }
@@ -42,10 +43,11 @@ namespace Infrastructure.Repositories
         }
 
 
-        public async Task UpdateAsync(TEntity entity)
+        public Task UpdateAsync(TEntity entity)
         {
             entity.UpdateDate = DateTime.Now;
             _dbSet.Update(entity);
+            return Task.CompletedTask;
         }
 
         public async Task DeleteAsync(TEntity entity)
@@ -55,7 +57,7 @@ namespace Infrastructure.Repositories
             await UpdateAsync(entity);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
             TEntity entity = await GetByIdAsync(id);
             await DeleteAsync(entity); 
@@ -63,7 +65,7 @@ namespace Infrastructure.Repositories
         }
 
     
-        public async Task SaveAsync()
+        public async Task SaveChangesAsync()
         {
            await _Context.SaveChangesAsync();
         }

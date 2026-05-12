@@ -1,18 +1,14 @@
-﻿using Application.ViewModels.LastWorks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.DataTransferObject;
+
 
 namespace Application.Services.LastWorks
 {
     public interface ILastWorksService
     {
-        Task<IEnumerable<LastWorkViewModel>> GetAllLastWorksAsync();
-        Task<LastWorkViewModel?> GetLastWorkByIdAsync(Guid id); 
-        Task CreateLastWorkAsync(CreateLastWorkViewModel model);
-        Task UpdateLastWorkAsync(EditLastWorkViewModel model);
+        Task<IEnumerable<LastWorksDto>> GetAllLastWorksAsync();
+        Task<LastWorksDto?> GetLastWorkByIdAsync(Guid id); 
+        Task CreateLastWorkAsync(LastWorksDto lastworkDto);
+        Task UpdateLastWorkAsync(LastWorksDto LastworkDt);
         Task DeleteLastWorkAsync(Guid id); 
     }
 }

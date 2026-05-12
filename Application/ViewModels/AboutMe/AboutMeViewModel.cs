@@ -1,9 +1,10 @@
-﻿using Domain.Entities.Common;
+﻿
 
-namespace Domain.Entities
+namespace Application.ViewModels.AboutMe
 {
-    public class AboutMeEntity : BaseEntity
+    public sealed record  AboutMeViewModel
     {
+        public Guid Id { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public int WorkYear { get; set; }

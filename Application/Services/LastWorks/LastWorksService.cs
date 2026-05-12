@@ -1,4 +1,5 @@
-﻿using Application.ViewModels.LastWorks;
+﻿using Application.DataTransferObject;
+using Application.Repositories;
 using Domain.Entities;
 
 
@@ -13,10 +14,10 @@ namespace Application.Services.LastWorks
             _lastWorkrepository = lastWorkrepository;
         }
 
-        public async Task<IEnumerable<LastWorkViewModel>> GetAllLastWorksAsync()
+        public async Task<IEnumerable<LastWorksDto>> GetAllLastWorksAsync()
         {
             var entities = await _lastWorkrepository.GetAllAsync();
-            return entities.Select(e => new LastWorkViewModel
+            return entities.Select(e => new LastWorksDto
             {
                 Id = e.Id, 
                 Title = e.Title,
@@ -27,13 +28,13 @@ namespace Application.Services.LastWorks
             }).ToList();
         }
 
-        public async Task<LastWorkViewModel?> GetLastWorkByIdAsync(Guid id)
+        public async Task<LastWorksDto?> GetLastWorkByIdAsync(Guid id)
         {
             var entity = await _lastWorkrepository.GetByIdAsync(id);
             if (entity == null)
                 return null;
 
-            return new LastWorkViewModel
+            return new LastWorksDto
             {
                 Id = entity.Id,
                 Title = entity.Title,
@@ -44,34 +45,34 @@ namespace Application.Services.LastWorks
             };
         }
 
-        public async Task CreateLastWorkAsync(CreateLastWorkViewModel model)
+        public async Task CreateLastWorkAsync(LastWorksDto lastWorksDto)
         {
             var newEntity = new LastWorksEntity
             {
                 Id = Guid.NewGuid(),
-                Title = model.Title,
-                ShortDescription = model.ShortDescription,
-                StartDate = model.StartDate,
-                EndDate = model.EndDate,
-                Logo = model.Logo 
+                Title = lastWorksDto.Title,
+                ShortDescription = lastWorksDto.ShortDescription,
+                StartDate = lastWorksDto.StartDate,
+                EndDate = lastWorksDto.EndDate,
+                Logo = lastWorksDto.Logo 
             };
 
             await _lastWorkrepository.AddAsync(newEntity);
             await _lastWorkrepository.SaveChangesAsync();
         }
 
-        public async Task UpdateLastWorkAsync(EditLastWorkViewModel model)
+        public async Task UpdateLastWorkAsync(LastWorksDto lastWorksDto)
         {
-            var entity = await _lastWorkrepository.GetByIdAsync(model.Id);
+            var entity = await _lastWorkrepository.GetByIdAsync(lastWorksDto.Id);
             if (entity == null) return;
 
-            entity.Title = model.Title;
-            entity.ShortDescription = model.ShortDescription;
-            entity.StartDate = model.StartDate;
-            entity.EndDate = model.EndDate;
-            entity.Logo = model.Logo;
+            entity.Title = lastWorksDto.Title;
+            entity.ShortDescription = lastWorksDto.ShortDescription;
+            entity.StartDate = lastWorksDto.StartDate;
+            entity.EndDate = lastWorksDto.EndDate;
+            entity.Logo = lastWorksDto.Logo;
 
-            _lastWorkrepository.Update(entity);
+            _lastWorkrepository.UpdateAsync(entity);
             await _lastWorkrepository.SaveChangesAsync();
         }
 

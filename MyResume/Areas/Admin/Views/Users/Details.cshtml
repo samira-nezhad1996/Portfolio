@@ -1,27 +1,36 @@
-﻿@model UserViewModel
+﻿@model Application.ViewModels.User.UserViewModel
 @{
     ViewData["Title"] = "جزئیات کاربر";
 }
 
-<h2>جزئیات کاربر</h2>
+<h1>@ViewData["Title"]</h1>
 
-<div class="card">
-    <div class="card-body">
-        <dl class="row">
-            <dt class="col-sm-3">نام کامل:</dt>
-            <dd class="col-sm-9">@Model.FullName</dd>
-
-            <dt class="col-sm-3">ایمیل:</dt>
-            <dd class="col-sm-9">@Model.Email</dd>
-
-            <dt class="col-sm-3">شماره موبایل:</dt>
-            <dd class="col-sm-9">@Model.Mobile</dd>
-
-            <dt class="col-sm-3">تاریخ ایجاد:</dt>
-            <dd class="col-sm-9">@Model.CreateDate.ToString("yyyy/MM/dd")</dd>
-        </dl>
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">ویرایش</a>
-        <a asp-action="Index" class="btn btn-secondary">بازگشت</a>
-    </div>
+<div>
+    <h4>اطلاعات کاربر</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            نام کامل
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            ایمیل
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            موبایل
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+    
+    </dl>
 </div>
-
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-secondary">ویرایش</a> |
+    <a asp-action="Index" class="btn btn-sm btn-outline-info">بازگشت به لیست</a>
+</div>

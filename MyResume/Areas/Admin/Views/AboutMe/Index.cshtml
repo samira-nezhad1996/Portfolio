@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Application.DataTransferObject.AboutMeDto>
+
+@{
+    ViewData["Title"] = "مدیریت About Me";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">مدیریت بخش About Me</h2>
+        <a asp-area="Admin" asp-controller="AboutMe" asp-action="Create" class="btn btn-primary">
+            افزودن مورد جدید
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>نام</th>
+                            <th>توضیحات</th>
+                            <th>سال کاری</th>
+                            <th>پروژه‌ها</th>
+                            <th>مشتریان</th>
+                            <th>ایمیل</th>
+                            <th>موبایل</th>
+                            <th style="width: 180px;">عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.WorkYear</td>
+                                    <td>@item.CompletedProject</td>
+                                    <td>@item.Customers</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Mobile</td>
+                                    <td>
+                                        <a asp-area="Admin"
+                                           asp-controller="AboutMe"
+                                           asp-action="Edit"
+                                           asp-route-id="@item.Id"
+                                           class="btn btn-sm btn-warning">
+                                            ویرایش
+                                        </a>
+
+                                        <form asp-area="Admin"
+                                              asp-controller="AboutMe"
+                                              asp-action="Delete"
+                                              asp-route-id="@item.Id"
+                                              method="post"
+                                              style="display:inline;">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit"
+                                                    class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('آیا از حذف این مورد مطمئن هستید؟');">
+                                                حذف
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center">موردی ثبت نشده است</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
