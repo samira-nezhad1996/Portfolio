@@ -1,6 +1,6 @@
 ﻿using Application.DataTransferObject;
 using Domain.Entities;
-using Application.Repositories;
+using Application.Contract;
 
 
 namespace Application.Services.User;

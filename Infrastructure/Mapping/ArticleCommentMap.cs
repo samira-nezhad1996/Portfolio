@@ -18,8 +18,9 @@ namespace Infrastructure.Mapping
             builder.Property(c => c.Email).HasMaxLength(100).IsRequired();
             builder.Property(c => c.Mobile).HasMaxLength(20).IsRequired();
             builder.Property(c => c.Comment).HasMaxLength(200).IsRequired();
-            builder.Property(c => c.ArticleId).HasMaxLength(20).IsRequired();
-         
+            builder.HasOne(x => x.Article).WithMany(x => x.Comments).HasForeignKey(x => x.ArticleId);
+
+
         }
 
     }

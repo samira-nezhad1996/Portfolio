@@ -2,8 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Application.Services.AboutMe;
 using Application.Services.User;
-using Application.Repositories;
 using Application.Services.LastWorks;
+using Application.Contract;
+using Application.Services.Portfolio;
 
 namespace Infrastructure
 {
@@ -15,6 +16,7 @@ namespace Infrastructure
             services.AddScoped<IAboutMeService, AboutMeService>();
             services.AddScoped<IUserService, UserService >();
             services.AddScoped<ILastWorksService, LastWorksService >();
+            services.AddScoped<IPortfolioService, PortfolioService >();
         }
     }
 }

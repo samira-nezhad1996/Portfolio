@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Mapping
 {
-    internal sealed class ResumeMap : IEntityTypeConfiguration<ResumeEntity>
+    internal sealed class PortfolioMap : IEntityTypeConfiguration<PortfolioEntity>
     {
-        public void Configure(EntityTypeBuilder<ResumeEntity> builder)
+        public void Configure(EntityTypeBuilder<PortfolioEntity> builder)
         {
-            builder.ToTable("Resume");
+            builder.ToTable("Portfolio");
             builder.Property(r => r.Title).HasMaxLength(50).IsRequired();
             builder.Property(r => r.ShortDescription).HasMaxLength(1000).IsRequired();
             builder.Property(r => r.Picture).HasMaxLength(500).IsRequired();

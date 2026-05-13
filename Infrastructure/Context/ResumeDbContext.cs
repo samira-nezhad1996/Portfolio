@@ -18,7 +18,7 @@ namespace Infrastructure.Context
         public DbSet<PrizesEntity> Prizes { get; set; }
         public DbSet<ProfessionEntity> Professions { get; set; }
         public DbSet<QuestionsEntity> Questions { get; set; }
-        public DbSet<ResumeEntity> Resume { get; set; }
+        public DbSet<PortfolioEntity> Resume { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<WorkWithEntity> WorkWith { get; set; }
 

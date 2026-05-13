@@ -18,7 +18,6 @@
     <Folder Include="Services\CustomersComments\" />
     <Folder Include="Services\MyServices\" />
     <Folder Include="Services\WorkWith\" />
-    <Folder Include="Services\Resume\" />
     <Folder Include="Services\Questions\" />
     <Folder Include="Services\Professions\" />
     <Folder Include="Services\Prizes\" />

@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
-using Application.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Application.Contract;
 
 namespace web.Controllers
 {

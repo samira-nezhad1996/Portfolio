@@ -11,7 +11,7 @@ namespace Domain.Entities
         public string Email { get; set; }
         public string Mobile { get; set; }
         public string Comment { get; set; }
-        public int ArticleId { get; set; }
+        public Guid ArticleId { get; set; }
 
         #region Relations
         [ForeignKey(nameof(ArticleId))]

@@ -1,8 +1,6 @@
-﻿
+﻿using Domain.Entities.Common;
 
-using Domain.Entities.Common;
-
-namespace Application.Repositories
+namespace Application.Contract
 {
     public interface IGenericRepository<TEntity> where TEntity : BaseEntity
     {
@@ -10,7 +8,7 @@ namespace Application.Repositories
 
 
         Task<IEnumerable<TEntity>> GetAllAsync();
-        Task<TEntity?>GetByIdAsync (Guid id);
+        Task<TEntity?> GetByIdAsync(Guid id);
         Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
         Task DeleteAsync(TEntity entity);

@@ -1,7 +1,7 @@
 ﻿using Domain.Entities.Common;
 using Infrastructure.Context;
-using Application.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Application.Contract;
 
 namespace Infrastructure.Repositories
 {
@@ -21,8 +21,6 @@ namespace Infrastructure.Repositories
         {
            return _dbSet.AsQueryable();
         }
-
-
 
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
@@ -63,7 +61,6 @@ namespace Infrastructure.Repositories
             await DeleteAsync(entity); 
         
         }
-
     
         public async Task SaveChangesAsync()
         {

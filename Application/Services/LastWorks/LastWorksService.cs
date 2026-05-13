@@ -1,5 +1,5 @@
-﻿using Application.DataTransferObject;
-using Application.Repositories;
+﻿using Application.Contract;
+using Application.DataTransferObject;
 using Domain.Entities;
 
 
