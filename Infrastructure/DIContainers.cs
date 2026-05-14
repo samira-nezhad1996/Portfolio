@@ -5,6 +5,7 @@ using Application.Services.User;
 using Application.Services.LastWorks;
 using Application.Contract;
 using Application.Services.Portfolio;
+using Application.Services.MyServices;
 
 namespace Infrastructure
 {
@@ -17,6 +18,7 @@ namespace Infrastructure
             services.AddScoped<IUserService, UserService >();
             services.AddScoped<ILastWorksService, LastWorksService >();
             services.AddScoped<IPortfolioService, PortfolioService >();
+            services.AddScoped<IMyServiceService, MyServiceService >();
         }
     }
 }

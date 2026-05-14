@@ -1,0 +1,47 @@
+﻿@model Application.ViewModels.MyService.EditMyServiceViewModel
+@{
+    ViewData["Title"] = "ویرایش خدمت";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Logo" class="form-label">آدرس تصویر (لوگو)</label>
+                <input asp-for="Logo" class="form-control" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+                <small class="form-text text-muted">لطفاً آدرس کامل تصویر را وارد کنید.</small>
+                @if (!string.IsNullOrEmpty(Model.Logo))
+                {
+                    <div class="mt-2">
+                        <img src="@Model.Logo" alt="Current Logo" style="width: 100px; height: 100px; object-fit: cover;" />
+                    </div>
+                }
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="ذخیره تغییرات" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">بازگشت به لیست</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

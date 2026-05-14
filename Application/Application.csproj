@@ -16,7 +16,6 @@
     <Folder Include="Services\ArticleView\" />
     <Folder Include="Services\Contact\" />
     <Folder Include="Services\CustomersComments\" />
-    <Folder Include="Services\MyServices\" />
     <Folder Include="Services\WorkWith\" />
     <Folder Include="Services\Questions\" />
     <Folder Include="Services\Professions\" />
